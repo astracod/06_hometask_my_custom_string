@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-    /*    MyString a = new MyString(" Hello ");
+        MyString a = new MyString(" Hello ");
         System.out.println(" Объект 1 класса MyString :" + a);
         MyString b = new MyString(" world ");
         System.out.println(" Объект 2 класса MyString :" + b);
@@ -14,14 +14,14 @@ public class Main {
         MyString d = c.substring(1, 5);
         System.out.println(" Метод substring : " + d);
         MyString e = d.replace('l', 'k');
-        System.out.println(" Метод replace : " + e);*/
+        System.out.println(" Метод replace : " + e);
         MyString f = new MyString("огонь, я иду гулять и иду один");
-   /*     MyString j = new MyString("иду");
+        MyString j = new MyString("иду");
         MyString q = new MyString("ползу");
         System.out.println("|---------------------------------------------------|");
         MyString h = f.replace(j, q);
-        System.out.println(" Строка после замены последовательности : | " + h);*/
-        System.out.println(" Изначальная строка : | " + f);
+        System.out.println(" Строка после замены последовательности методом replace : | " + h);
+         System.out.println(" Изначальная строка : | " + f);
         System.out.println(" Длина изначальной строки : "+f.length());
         System.out.println("|---------------------------------------------------|");
         System.out.println("|------------------MyString[] split(char s)---------------------|");
@@ -34,8 +34,8 @@ public class Main {
         for (int i = 0; i < z.length; i++) {
             System.out.println(z[i]);
         }
-
-
+        int p = f.indexOf(new MyString("г"), 11);
+        System.out.println(" Метод indexOf : "+p);
 
     }
 }

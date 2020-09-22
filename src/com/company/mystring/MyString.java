@@ -56,8 +56,12 @@ public class MyString {
     }
 
 
-    // MyString concat(MyString another) - возвращает результат приклеивания строки another к текущей строке
 
+    /**
+     * MyString concat(MyString another) - возвращает результат приклеивания строки another к текущей строке
+     * @param another
+     * @return
+     */
     public MyString concat(MyString another) {
         char[] con = new char[newString.length + another.newString.length];
         for (int i = 0; i < newString.length; i++) {
@@ -69,9 +73,13 @@ public class MyString {
         return new MyString(con);
     }
 
-// MyString substring(int offset, int count) - возвращает новую строку, состоящую из части исходной (подстрока) длиной count символов,
-// начиная с символа offset - пропустить офсет
-
+    /**
+     * возвращает новую строку, состоящую из части исходной (подстрока) длиной count символов,
+     * начиная с символа offset - пропустить офсет
+     * @param offset
+     * @param count
+     * @return
+     */
     public MyString substring(int offset, int count) {
         char[] sub = new char[count];
 
@@ -82,11 +90,17 @@ public class MyString {
         return new MyString(sub);
     }
 
-    // MyString replace(char old, char new) - возвращает новую строку, полученную из исходной путем замены всех символов old на символы new
 
+    /**
+     * MyString replace(char old, char new) - возвращает новую строку, полученную из исходной путем замены всех символов old на символы new
+     *
+     * @param oldsymbol
+     * @param newsymbol
+     * @return
+     */
     public MyString replace(char oldsymbol, char newsymbol) {
         char[] buf = new char[newString.length];
-
+        System.out.println(" Длина массива : " + newString.length);
         for (int i = 0; i < newString.length; i++) {
             buf[i] = newString[i];
             if (newString[i] == oldsymbol) {
@@ -96,9 +110,32 @@ public class MyString {
         return new MyString(buf);
     }
 
-// MyString replace(MyString old, MyString ne) - возвращает новую строку, полученную из исходной путем замены всех
-// последовательностей символов old на последовательности ne
+    /**
+     * возвращает индекс первого эелемента последовательности символов при первом вхождении
+     * @param
+     * @return
+     */
+    public int indexOf(MyString needle, int offset) {
+        char marker = needle.newString[0];
+        int lengthExamine = needle.length();
+        MyString examine;
+        for (int i = offset; i < newString.length; i++) {
+            if (newString[i] == marker) {
+                examine = substring(i, lengthExamine);
+                examine.equals(needle);
+                return i;
+            }
+        }
+        return -1;
+    }
 
+
+    /**
+     * MyString replace(MyString old, MyString ne) - возвращает новую строку, полученную из исходной путем замены всех
+     *  последовательностей символов old на последовательности ne
+     * @param b
+     * @return
+     */
     public boolean equals(MyString b) {
         if (this.length() != b.length()) return false;
         for (int i = 0; i < b.newString.length; i++) {
@@ -130,8 +167,13 @@ public class MyString {
         return work;
     }
 
-//   MyString[] split(char s) - возвращает массив строк, полученный путем разбиения исходной строки по указанному символу
 
+    /**
+     * MyString[] split(char s) - возвращает массив строк, полученный путем разбиения исходной строки по указанному символу
+     *
+     * @param s
+     * @return
+     */
     public MyString[] split(char s) {
         int num = 0;
         int newlength = 0;
@@ -153,13 +195,18 @@ public class MyString {
             workString[newlength] = substring(num, newString.length - num);
         }
         if (newlength == 0) {
-            return new MyString[]{ this};
+            return new MyString[]{this};
         }
         return workString;
     }
 
-//    MyString[] split(MyString s) - возвращает массив строк, полученный путем разбиения исходной строки по указанной последовательности символов
 
+    /**
+     * MyString[] split(MyString s) - возвращает массив строк, полученный путем разбиения исходной строки по указанной последовательности символов
+     *
+     * @param s
+     * @return
+     */
     public MyString[] split(MyString s) {
 
         char marker = s.newString[0];
@@ -189,8 +236,11 @@ public class MyString {
                     target = i + lengthS;
                     j++;
                 }
+                arrString[numberRepetitions] = this.substring(target, newString.length - target);
             }
-            arrString[numberRepetitions] = this.substring(target, newString.length - target);
+            if (numberRepetitions == 0) {
+                return new MyString[]{this};
+            }
         }
         return arrString;
     }
