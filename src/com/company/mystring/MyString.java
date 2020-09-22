@@ -100,15 +100,13 @@ public class MyString {
 // последовательностей символов old на последовательности ne
 
     public boolean equals(MyString b) {
-        boolean general = true;
         if (this.length() != b.length()) return false;
         for (int i = 0; i < b.newString.length; i++) {
             if (this.newString[i] != b.newString[i]) {
-                general = false;
-                break;
+                return false;
             }
         }
-        return general;
+        return true;
     }
 
     public MyString replace(MyString old, MyString ne) {
@@ -146,14 +144,16 @@ public class MyString {
         workString = new MyString[newlength + 1];
         int k = 0;
         for (int j = 0; j < newString.length && k < newlength; j++) {
-            workString[k] = new MyString();
             if (newString[j] == s) {
-                workString[k] = workString[k].concat(substring(num, j - num));
+                workString[k] = substring(num, j - num);
                 k++;
                 num = j;
             }
             workString[newlength] = new MyString();
-            workString[newlength] = workString[newlength].concat(substring(num, newString.length - num));
+            workString[newlength] = substring(num, newString.length - num);
+        }
+        if (newlength == 0) {
+            return new MyString[]{ this};
         }
         return workString;
     }
@@ -166,7 +166,7 @@ public class MyString {
         int lengthS = s.length();
         int target = 0;
         MyString[] arrString;
-        MyString checkedString = new MyString();
+        MyString checkedString;
         int numberRepetitions = 0;
 
         for (int i = 0; i < newString.length; i++) {
@@ -178,22 +178,21 @@ public class MyString {
                 }
             }
         }
-         arrString = new MyString[numberRepetitions+1];
+        arrString = new MyString[numberRepetitions + 1];
 
         for (int i = 0, j = 0; i < newString.length && j < arrString.length; i++) {
             if (newString[i] == marker) {
                 checkedString = this.substring(i, lengthS);
 
                 if (checkedString.equals(s)) {
-//                    System.out.println(" слово : " + checkedString);
                     arrString[j] = this.substring(target, i - target);
                     target = i + lengthS;
                     j++;
                 }
             }
-            arrString[numberRepetitions] = this.substring(target,newString.length - target);
+            arrString[numberRepetitions] = this.substring(target, newString.length - target);
         }
-       return arrString;
+        return arrString;
     }
 
 }
