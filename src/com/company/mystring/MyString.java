@@ -56,9 +56,9 @@ public class MyString {
     }
 
 
-
     /**
      * MyString concat(MyString another) - возвращает результат приклеивания строки another к текущей строке
+     *
      * @param another
      * @return
      */
@@ -76,6 +76,7 @@ public class MyString {
     /**
      * возвращает новую строку, состоящую из части исходной (подстрока) длиной count символов,
      * начиная с символа offset - пропустить офсет
+     *
      * @param offset
      * @param count
      * @return
@@ -112,18 +113,20 @@ public class MyString {
 
     /**
      * возвращает индекс первого эелемента последовательности символов при первом вхождении
+     *
      * @param
      * @return
      */
     public int indexOf(MyString needle, int offset) {
         char marker = needle.newString[0];
-        int lengthExamine = needle.length();
-        MyString examine;
+
+        MyString examine = null;
         for (int i = offset; i < newString.length; i++) {
             if (newString[i] == marker) {
-                examine = substring(i, lengthExamine);
-                examine.equals(needle);
-                return i;
+                examine = substring(i, needle.length());
+                if (examine.equals(needle)) {
+                    return i;
+                }
             }
         }
         return -1;
@@ -132,7 +135,8 @@ public class MyString {
 
     /**
      * MyString replace(MyString old, MyString ne) - возвращает новую строку, полученную из исходной путем замены всех
-     *  последовательностей символов old на последовательности ne
+     * последовательностей символов old на последовательности ne
+     *
      * @param b
      * @return
      */
