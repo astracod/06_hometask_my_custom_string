@@ -101,7 +101,6 @@ public class MyString {
      */
     public MyString replace(char oldsymbol, char newsymbol) {
         char[] buf = new char[newString.length];
-        System.out.println(" Длина массива : " + newString.length);
         for (int i = 0; i < newString.length; i++) {
             buf[i] = newString[i];
             if (newString[i] == oldsymbol) {
@@ -219,8 +218,7 @@ public class MyString {
         MyString[] arrString;
         int numberRepetitions = 0;
 
-
-        for (int i = 0; i < newString.length; i++) {
+        for (int i = 0; i < newString.length ; i++) {
             int a = indexOf(s, i);
             if (a >= 0) {
                 numberRepetitions++;
@@ -228,14 +226,13 @@ public class MyString {
             }
         }
         arrString = new MyString[numberRepetitions + 1];
+
         for (int i = 0, j = 0; i < newString.length && j < arrString.length; i++) {
             int a = indexOf(s, i);
-            if (a == i) {
-                if (a != i) continue;
+            if (a != i) continue;
                 arrString[j] = this.substring(target, i - target);
                 target = i + lengthS;
                 j++;
-            }
             arrString[numberRepetitions] = this.substring(target, newString.length - target);
             if (numberRepetitions == 0) {
                 return new MyString[]{this};

@@ -1,6 +1,6 @@
 package com.company.mystring;
 
-import java.util.Arrays;
+
 
 public class Main {
 
@@ -25,6 +25,7 @@ public class Main {
         System.out.println(" Длина изначальной строки : "+f.length());
         System.out.println("|---------------------------------------------------|");
         System.out.println("|------------------MyString[] split(char s)---------------------|");
+        System.out.println(" Изначальная строка : | " + f);
         MyString[] y = f.split('я');
         for (int i = 0; i < y.length; i++) {
             System.out.println(y[i]);
