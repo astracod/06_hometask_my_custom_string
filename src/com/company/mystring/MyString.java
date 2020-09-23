@@ -119,8 +119,7 @@ public class MyString {
      */
     public int indexOf(MyString needle, int offset) {
         char marker = needle.newString[0];
-
-        MyString examine = null;
+        MyString examine;
         for (int i = offset; i < newString.length; i++) {
             if (newString[i] == marker) {
                 examine = substring(i, needle.length());
@@ -211,44 +210,39 @@ public class MyString {
      * @param s
      * @return
      */
+
+
     public MyString[] split(MyString s) {
 
-        char marker = s.newString[0];
         int lengthS = s.length();
         int target = 0;
         MyString[] arrString;
-        MyString checkedString;
         int numberRepetitions = 0;
 
+
         for (int i = 0; i < newString.length; i++) {
-            if (newString[i] == marker) {
-                checkedString = this.substring(i, lengthS);
-                if (checkedString.equals(s)) {
-                    i = i + lengthS;
-                    numberRepetitions++;
-                }
+            int a = indexOf(s, i);
+            if (a >= 0) {
+                numberRepetitions++;
+                i = a + lengthS;
             }
         }
         arrString = new MyString[numberRepetitions + 1];
-
         for (int i = 0, j = 0; i < newString.length && j < arrString.length; i++) {
-            if (newString[i] == marker) {
-                checkedString = this.substring(i, lengthS);
-
-                if (checkedString.equals(s)) {
-                    arrString[j] = this.substring(target, i - target);
-                    target = i + lengthS;
-                    j++;
-                }
-                arrString[numberRepetitions] = this.substring(target, newString.length - target);
+            int a = indexOf(s, i);
+            if (a == i) {
+                if (a != i) continue;
+                arrString[j] = this.substring(target, i - target);
+                target = i + lengthS;
+                j++;
             }
+            arrString[numberRepetitions] = this.substring(target, newString.length - target);
             if (numberRepetitions == 0) {
                 return new MyString[]{this};
             }
         }
         return arrString;
     }
-
 }
 
 

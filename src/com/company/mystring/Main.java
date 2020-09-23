@@ -21,8 +21,8 @@ public class Main {
         System.out.println("|---------------------------------------------------|");
         MyString h = f.replace(j, q);
         System.out.println(" Строка после замены последовательности методом replace : | " + h);
-         System.out.println(" Изначальная строка : | " + f);
-  /*      System.out.println(" Длина изначальной строки : "+f.length());
+
+        System.out.println(" Длина изначальной строки : "+f.length());
         System.out.println("|---------------------------------------------------|");
         System.out.println("|------------------MyString[] split(char s)---------------------|");
         MyString[] y = f.split('я');
@@ -30,12 +30,13 @@ public class Main {
             System.out.println(y[i]);
         }
         System.out.println("|-----------------MyString[] split(MyString s)--------------------------|");
+        System.out.println(" Изначальная строка : | " + f);
         MyString[] z = f.split(new MyString("иду"));
         for (int i = 0; i < z.length; i++) {
             System.out.println(z[i]);
-        }*/
+        }
+        System.out.println("|------------------- indexOf --------------------------|");
         int p = f.indexOf(new MyString("иду"), 6);
-        System.out.println(" Метод indexOf : "+p);
-
+        System.out.println(" Функция indexOf : "+p);
     }
 }
