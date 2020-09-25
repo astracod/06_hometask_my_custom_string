@@ -37,7 +37,7 @@ public class Main {
             System.out.println(z[i]);
         }
         System.out.println("|------------------- indexOf --------------------------|");
-        int p = f.indexOf(new MyString("иду"), 6);
+        int p = f.indexOf(new MyString("иду"), 0);
         System.out.println(" Функция indexOf : "+p);
     }
 }

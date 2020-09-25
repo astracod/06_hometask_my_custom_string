@@ -213,21 +213,24 @@ public class MyString {
 
     public MyString[] split(MyString s) {
 
+        MyString[] arrString;
         int lengthS = s.length();
         int target = 0;
-        MyString[] arrString;
         int numberRepetitions = 0;
+        int offset = 0;
+        int lengthArr = 0;
 
-        for (int i = 0; i < newString.length ; i++) {
-            int a = indexOf(s, i);
-            if (a >= 0) {
+        while (lengthArr >= 0 ){
+             lengthArr = indexOf(s, offset);
+            if (lengthArr == -1) continue;
                 numberRepetitions++;
-                i = a + lengthS;
-            }
-        }
-        arrString = new MyString[numberRepetitions + 1];
+                offset = lengthArr + lengthS;
 
-        for (int i = 0, j = 0; i < newString.length && j < arrString.length; i++) {
+        }
+
+        arrString = new MyString[numberRepetitions +1];
+
+        for (int i = 0, j = 0; i <= newString.length  && j < arrString.length; i++) {
             int a = indexOf(s, i);
             if (a != i) continue;
                 arrString[j] = this.substring(target, i - target);
